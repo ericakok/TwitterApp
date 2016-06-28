@@ -28,7 +28,7 @@
         android:text="New Text"
         android:id="@+id/tvBody"
         android:layout_alignBottom="@+id/ivProfileImage"
-        android:layout_toRightOf="@+id/ivProfileImage"
-        android:layout_toEndOf="@+id/ivProfileImage" />
+        android:layout_alignLeft="@+id/tvUserName"
+        android:layout_alignStart="@+id/tvUserName" />
 
 </RelativeLayout>

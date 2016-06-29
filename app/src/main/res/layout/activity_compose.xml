@@ -69,6 +69,7 @@
         android:layout_below="@+id/etHappening"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:onClick="postTweet"
         android:background="#55acee" />
 
     <TextView

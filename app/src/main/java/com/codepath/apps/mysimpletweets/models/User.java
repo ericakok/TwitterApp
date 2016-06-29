@@ -59,6 +59,7 @@ public class User {
         return followingCount;
     }
 
+
     // deserialize the user json => User
     public static User fromJSON(JSONObject json) {
         User u = new User();

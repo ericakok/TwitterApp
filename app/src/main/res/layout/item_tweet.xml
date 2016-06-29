@@ -4,8 +4,8 @@
     android:padding="10dp">
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/ivProfileImage"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -20,15 +20,28 @@
         android:id="@+id/tvUserName"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivProfileImage"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweet"
+        android:id="@+id/tvBody"
+        android:textSize="12sp"
+        android:layout_below="@+id/tvUserName"
+        android:layout_toRightOf="@+id/ivProfileImage"
         android:layout_toEndOf="@+id/ivProfileImage" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/tvBody"
-        android:layout_alignBottom="@+id/ivProfileImage"
-        android:layout_alignLeft="@+id/tvUserName"
-        android:layout_alignStart="@+id/tvUserName" />
+        android:text="Time"
+        android:id="@+id/tvTimeStamp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textIsSelectable="false"
+        android:textSize="12sp" />
 
 </RelativeLayout>

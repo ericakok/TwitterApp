@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.mysimpletweets.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -34,12 +35,6 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
 
-        client.postStatusUpdate(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-            }
-        });
     }
 
     private void populateComposeTweet(User user) {
@@ -49,10 +44,21 @@ public class ComposeActivity extends AppCompatActivity {
 
         Picasso.with(this).load(user.getProfileImageUrl()).into(ivProfileImage);
         tvFullName.setText(user.getName());
-        tvUsername.setText(user.getScreenName());
+        tvUsername.setText("@" + user.getScreenName());
     }
 
     public void postTweet(View view) {
+        client.postStatusUpdate(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Toast.makeText(getApplicationContext(), "Posted!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+    }
+
+    public void exitScreen(View view) {
         finish();
     }
 }

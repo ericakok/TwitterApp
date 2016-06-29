@@ -55,6 +55,12 @@ public class TimelineActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onComposeView(MenuItem item) {
+        // Launch the compose tweet view
+        Intent i = new Intent(this, ComposeActivity.class);
+        startActivity(i);
+    }
+
     // Return the order of the fragments in the view pager
     public class TweetsPagerAdapter extends FragmentPagerAdapter {
         private String tabTitles[] = { "Home", "Mentions" };

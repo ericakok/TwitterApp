@@ -1,17 +1,21 @@
 package com.codepath.apps.mysimpletweets;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
+
+import java.io.Serializable;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -48,14 +52,21 @@ public class ComposeActivity extends AppCompatActivity {
     }
 
     public void postTweet(View view) {
-        client.postStatusUpdate(new JsonHttpResponseHandler() {
+        EditText etTweet = (EditText) findViewById(R.id.etTweet);
+        final String strTweet = etTweet.getText().toString();
+
+        client.postStatusUpdate(strTweet, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                Toast.makeText(getApplicationContext(), "Posted!", Toast.LENGTH_SHORT).show();
-                finish();
+                Tweet tweet = Tweet.fromJSON(response);
+                Intent data = new Intent();
+                data.putExtra("status", (Serializable) tweet);
+                setResult(RESULT_OK, data);
             }
         });
+
+
+        finish();
     }
 
     public void exitScreen(View view) {

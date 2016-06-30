@@ -3,6 +3,8 @@ package com.codepath.apps.mysimpletweets.models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /*
 
  "user": {
@@ -20,7 +22,7 @@ import org.json.JSONObject;
 
  */
 
-public class User {
+public class User implements Serializable {
     // List attributes
 
     private String name;

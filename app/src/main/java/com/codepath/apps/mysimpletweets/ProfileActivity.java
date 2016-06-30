@@ -26,18 +26,35 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         client = TwitterApplication.getRestClient();
-        // Get the account info
-        client.getUserInfo(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                user = User.fromJSON(response);
-                // My current user account's info
-                getSupportActionBar().setTitle("@" + user.getScreenName());
-                populateProfileHeader(user);
-            }
-        });
-        // Get the screen name from the activity that launches this
+
         String screenName = getIntent().getStringExtra("screen_name");
+
+        if (screenName == null) {
+            // Get the account info
+            client.getUserInfo(new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    user = User.fromJSON(response);
+                    // My current user account's info
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    populateProfileHeader(user);
+                }
+            });
+        }
+        else {
+            client.getUser(screenName, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    user = User.fromJSON(response);
+                    // My current user account's info
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    populateProfileHeader(user);
+                }
+            });
+        }
+
+        // Get the screen name from the activity that launches this
+
         if (savedInstanceState == null) {
             // Create the user timeline fragment
             UserTimelineFragment fragmentUserTimeline = UserTimelineFragment.newInstance(screenName);

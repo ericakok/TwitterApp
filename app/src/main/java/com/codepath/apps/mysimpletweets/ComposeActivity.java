@@ -93,9 +93,10 @@ public class ComposeActivity extends AppCompatActivity {
                 Intent data = new Intent();
                 data.putExtra("status", (Serializable) tweet);
                 setResult(RESULT_OK, data);
+                finish();
             }
         });
-        finish();
+
     }
 
     public void exitScreen(View view) {

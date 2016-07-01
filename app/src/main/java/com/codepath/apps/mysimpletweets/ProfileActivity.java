@@ -43,10 +43,15 @@ public class ProfileActivity extends AppCompatActivity {
                     getSupportActionBar().setTitle("@" + user.getScreenName());
                     populateProfileHeader(user);
                 }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                }
             });
         }
         else {
-            client.getUser(screenName, new JsonHttpResponseHandler() {
+                    client.getUser(screenName, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     user = User.fromJSON(response);
@@ -54,7 +59,12 @@ public class ProfileActivity extends AppCompatActivity {
                     getSupportActionBar().setTitle("@" + user.getScreenName());
                     populateProfileHeader(user);
                 }
-            });
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                            super.onFailure(statusCode, headers, responseString, throwable);
+                        }
+                    });
         }
 
         // Get the screen name from the activity that launches this

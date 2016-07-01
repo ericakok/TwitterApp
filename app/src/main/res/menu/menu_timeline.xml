@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/miMessages"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_messages"
+        android:title="Messages"></item>
+
     <item
         android:id="@+id/miProfile"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:icon="@drawable/ic_profile"
         android:title="Profile"
         android:onClick="onProfileView"></item>
 
     <item
         android:id="@+id/miCompose"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:icon="@drawable/ic_compose"
         android:title="Compose Tweet"
         android:onClick="onComposeView"></item>
+
+    <item android:id="@+id/action_search"
+        android:orderInCategory="5"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
+
 </menu>

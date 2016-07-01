@@ -55,7 +55,7 @@
 
         <activity android:name=".ComposeActivity"
             android:label="@string/title_activity_Compose"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"/>
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"/>
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 import cz.msebera.android.httpclient.Header;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class ComposeActivity extends AppCompatActivity {
     TwitterClient client;
@@ -75,7 +76,7 @@ public class ComposeActivity extends AppCompatActivity {
         TextView tvFullName = (TextView) findViewById(R.id.tvFullName);
         TextView tvUsername = (TextView) findViewById(R.id.tvUsername);
 
-        Picasso.with(this).load(user.getProfileImageUrl()).into(ivProfileImage);
+        Picasso.with(this).load(user.getProfileImageUrl()).transform(new RoundedCornersTransformation(2, 2)).into(ivProfileImage);
         tvFullName.setText(user.getName());
         tvUsername.setText("@" + user.getScreenName());
     }

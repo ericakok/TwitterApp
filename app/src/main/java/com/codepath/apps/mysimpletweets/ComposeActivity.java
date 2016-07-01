@@ -3,6 +3,8 @@ package com.codepath.apps.mysimpletweets;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,6 +25,9 @@ public class ComposeActivity extends AppCompatActivity {
     TwitterClient client;
     User user;
 
+    private TextView tvCharCount;
+    private EditText etTweet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,30 @@ public class ComposeActivity extends AppCompatActivity {
                 populateComposeTweet(user);
             }
         });
+
+        tvCharCount = (TextView) findViewById(R.id.tvCharCount);
+        etTweet = (EditText) findViewById(R.id.etTweet);
+
+        final TextWatcher watcher = new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int aft)
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                // this will show characters remaining
+                tvCharCount.setText(140 - s.toString().length() + " ");
+            }
+        };
+
+        etTweet.addTextChangedListener(watcher);
 
     }
 
@@ -64,12 +93,11 @@ public class ComposeActivity extends AppCompatActivity {
                 setResult(RESULT_OK, data);
             }
         });
-
-
         finish();
     }
 
     public void exitScreen(View view) {
         finish();
     }
+
 }

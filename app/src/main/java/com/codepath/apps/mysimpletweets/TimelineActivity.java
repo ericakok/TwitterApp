@@ -67,7 +67,7 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             // Extract name value from result extras
-             Tweet tweet = (Tweet) data.getSerializableExtra("status");
+            Tweet tweet = (Tweet) data.getSerializableExtra("status");
 
             HomeTimelineFragment fragmentHomeTweets =
                     (HomeTimelineFragment) adapterViewPager.getRegisteredFragment(0);

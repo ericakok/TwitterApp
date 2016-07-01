@@ -36,15 +36,17 @@
         <!-- Support library compatibility -->
         <item name="background">@color/holo_blue_light</item>
         <item name="titleTextStyle">@style/MyActionBar.TitleTextStyle</item>
+        <item name="android:logo">@drawable/ic_logo</item>
+        <item name="displayOptions">useLogo|showHome</item>
     </style>
 
     <style name="MyActionBar.TitleTextStyle"
         parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/gray</item>
     </style>
 
     <style name="MyActionBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/gray</item>
     </style>
 
 

@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
 /**
  * Created by ekok on 6/27/16.
  */
@@ -59,7 +61,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         tvBody.setText(tweet.getBody());
         tvTimeStamp.setText(tweet.getRelativeTimeAgo(tweet.getCreatedAt()));
         ivProfileImage.setImageResource(android.R.color.transparent); // clear out the old image for a recycled view
-        Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).into(ivProfileImage);
+        Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).transform(new RoundedCornersTransformation(2, 2)).into(ivProfileImage);
         // 5. Return the view to be inserted into the list
         return convertView;
     }

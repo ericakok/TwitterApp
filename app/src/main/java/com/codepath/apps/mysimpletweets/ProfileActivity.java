@@ -1,5 +1,6 @@
 package com.codepath.apps.mysimpletweets;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,8 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 public class ProfileActivity extends AppCompatActivity {
     TwitterClient client;
     User user;
+
+    private final int REQUEST_CODE = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,5 +93,10 @@ public class ProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         return onOptionsItemSelected(item);
+    }
+
+    public void onComposeView_2(MenuItem item) {
+        Intent i = new Intent(this, ComposeActivity.class);
+        startActivityForResult(i, REQUEST_CODE);
     }
 }

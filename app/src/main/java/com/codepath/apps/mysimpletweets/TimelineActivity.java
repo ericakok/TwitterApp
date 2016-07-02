@@ -39,12 +39,14 @@ public class TimelineActivity extends AppCompatActivity {
         // Get the view pager
         ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
         // Set the viewpager adapter for the pager
-        adapterViewPager=new TweetsPagerAdapter(getSupportFragmentManager());
+        adapterViewPager = new TweetsPagerAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
         // Find the sliding tabstrip
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         // Attach the tabstrip to the viewpager
         tabStrip.setViewPager(vpPager);
+        tabStrip.setTextColor(Color.parseColor("#55ACEE"));
+        tabStrip.setIndicatorColor(Color.parseColor("#55ACEE"));
 
         ActionBar actionBar = getSupportActionBar();
 

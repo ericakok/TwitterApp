@@ -46,7 +46,7 @@ public class User implements Serializable {
     }
 
     public String getProfileImageUrl() {
-        return profileImageUrl;
+        return profileImageUrl + "_bigger";
     }
 
     public String getTagline() {
